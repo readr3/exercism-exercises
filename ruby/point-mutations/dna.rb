@@ -6,7 +6,7 @@ class DNA
   def hamming_distance(new_sequence)
     result = 0
     minimum_length(@sequence, new_sequence).times do |i|
-      result += 1 unless nucleotide_matches?(i, @sequence, new_sequence)
+      result += 1 unless nucleotide_matches?(i, new_sequence)
     end
     result
   end
@@ -17,7 +17,7 @@ class DNA
     [s1.length, s2.length].min
   end
 
-  def nucleotide_matches?(i, sequence1, sequence2)
-    sequence1[i] == sequence2[i]
+  def nucleotide_matches?(i, new_sequence)
+    @sequence[i] == new_sequence[i]
   end
 end
