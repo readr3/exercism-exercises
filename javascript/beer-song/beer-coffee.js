@@ -3,9 +3,13 @@
   var Beer;
 
   Beer = (function() {
-    function Beer() {}
+    function Beer() {
+      if (!(this instanceof Beer)) {
+        return new Beer();
+      }
+    }
 
-    Beer.bottles = function(n) {
+    Beer.prototype.bottles = function(n) {
       switch (n) {
         case 0:
           return "no more bottles";
@@ -16,7 +20,7 @@
       }
     };
 
-    Beer.pronoun = function(n) {
+    Beer.prototype.pronoun = function(n) {
       if (n === 1) {
         return "it";
       } else {
@@ -24,31 +28,31 @@
       }
     };
 
-    Beer.earlyVerse = function(n) {
-      return ["" + (Beer.bottles(n)) + " of beer on the wall,", " " + (Beer.bottles(n)) + " of beer.\n", "Take " + (Beer.pronoun(n)) + " down and pass it around,", " " + (Beer.bottles(n - 1)) + " of beer on the wall.\n"].join('');
+    Beer.prototype.earlyVerse = function(n) {
+      return ["" + (this.bottles(n)) + " of beer on the wall,", " " + (this.bottles(n)) + " of beer.\n", "Take " + (this.pronoun(n)) + " down and pass it around,", " " + (this.bottles(n - 1)) + " of beer on the wall.\n"].join('');
     };
 
-    Beer.finalVerse = function() {
+    Beer.prototype.finalVerse = function() {
       return ['No more bottles of beer on the wall,', ' no more bottles of beer.\n', 'Go to the store and buy some more,', ' 99 bottles of beer on the wall.\n'].join('');
     };
 
-    Beer.sing = function(first, last) {
+    Beer.prototype.sing = function(first, last) {
       var n, verses, _i;
       if (last == null) {
         last = 0;
       }
       verses = [];
       for (n = _i = first; first <= last ? _i <= last : _i >= last; n = first <= last ? ++_i : --_i) {
-        verses.push(Beer.verse(n));
+        verses.push(this.verse(n));
       }
       return verses.join('\n');
     };
 
-    Beer.verse = function(n) {
+    Beer.prototype.verse = function(n) {
       if (n > 0) {
-        return Beer.earlyVerse(n);
+        return this.earlyVerse(n);
       } else {
-        return Beer.finalVerse();
+        return this.finalVerse();
       }
     };
 
@@ -56,6 +60,6 @@
 
   })();
 
-  global.Beer = Beer;
+  global.Beer = new Beer();
 
 }).call(this);
