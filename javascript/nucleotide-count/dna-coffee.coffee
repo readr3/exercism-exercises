@@ -1,6 +1,4 @@
 class DNA
-  NUCLEOTIDES = "ACGTU"
-
   constructor: (sequence) ->
     @sequence = sequence
 
@@ -8,6 +6,8 @@ class DNA
     @sequence.split(nucleotide).length - 1
 
   count: (nucleotide) ->
+    NUCLEOTIDES = "ACGTU"
+
     if NUCLEOTIDES.indexOf(nucleotide) == -1
       throw new Error "Invalid Nucleotide"
     else

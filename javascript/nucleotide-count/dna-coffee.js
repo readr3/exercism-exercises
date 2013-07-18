@@ -3,10 +3,6 @@
   var DNA;
 
   DNA = (function() {
-    var NUCLEOTIDES;
-
-    NUCLEOTIDES = "ACGTU";
-
     function DNA(sequence) {
       this.sequence = sequence;
     }
@@ -16,6 +12,8 @@
     };
 
     DNA.prototype.count = function(nucleotide) {
+      var NUCLEOTIDES;
+      NUCLEOTIDES = "ACGTU";
       if (NUCLEOTIDES.indexOf(nucleotide) === -1) {
         throw new Error("Invalid Nucleotide");
       } else {
