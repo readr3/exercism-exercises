@@ -25,6 +25,6 @@ class RobotName
   end
 
   def self.random_letter
-    rand(97..122).chr
+    rand(65..90).chr
   end
 end
