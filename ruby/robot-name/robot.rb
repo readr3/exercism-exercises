@@ -1,35 +1,30 @@
 class Robot
-  def initialize
-    @name = RobotName.new.value
-  end
+  attr_reader :name
 
-  def name
-    @name
+  def initialize
+    reset
   end
 
   def reset
-    @name = RobotName.new.value
+    @name = RobotName.generate
   end
 end
 
 class RobotName
-  attr_reader :value
-
-  def initialize
-    @value = random_letter +
-             random_letter +
-             random_digit +
-             random_digit +
-             random_digit
+  def self.generate
+    name = ""
+    2.times { name << random_letter }
+    3.times { name << random_digit }
+    name
   end
 
   private
 
-  def random_digit
-    rand(10).to_s
+  def self.random_digit
+    rand(0..9).to_s
   end
 
-  def random_letter
-    rand(26).to_s(26)
+  def self.random_letter
+    rand(65..90).chr
   end
 end
