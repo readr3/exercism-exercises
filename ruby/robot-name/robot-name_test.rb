@@ -23,7 +23,7 @@ class RobotTest < MiniTest::Unit::TestCase
     robot.reset
     name2 = robot.name
     assert name != name2
-    assert_match(/\w{2}\d{3}/, name2)
+    assert_match(/[A-Z]{2}\d{3}/, name2)
   end
 end
 
