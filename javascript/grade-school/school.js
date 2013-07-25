@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  global.School = function(name) {
+  global.School = function() {
     this.db = {};
   };
 
@@ -24,7 +24,7 @@
   School.prototype.sort = function() {
     var result = {};
     var grades = Object.getOwnPropertyNames(this.db);
-    grades.sort().forEach( function(grade, i, a) {
+    grades.sort().forEach( function(grade) {
       result[grade] = this[grade].sort();
     }, this.db);
     return result;
