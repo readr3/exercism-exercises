@@ -16,6 +16,8 @@ class Year
   end
 end
 
+# Extension
+
 class Fixnum
   def leap_year?
     divisible_by?(4) unless divisible_by?(100) && !divisible_by?(400)
