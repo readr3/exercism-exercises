@@ -23,29 +23,34 @@
 //   this.count = new WordCounts(wordList);
 // };
 
-(function() {
+function Words(words) {
+  'use strict';
 
-  var cleanMessage = function(message) {
-    return message.replace(/[|&;$%@"<>()+,:!!^]/g, "").toLowerCase();
+  var counts, i, splitWords;
+
+  counts = {};
+  splitWords = words.split(' ');
+
+  function toAlphaChars(string) {
+    return string.replace(/[^\w]+/, '', '$&');
   }
 
-  var calculateWords = function(message) {
-    var out = {}
-      , arrayOfWords = cleanMessage(message).split(/\s+/);
+  for (i in splitWords) {
+    var word = toAlphaChars(splitWords[i]).toLowerCase();
 
-    for(i = 0; i < arrayOfWords.length; i++) {
-      var word = arrayOfWords[i];
-      if (out[word])
-        out[word] += 1;
-      else
-        out[word] = 1;
+    if (word.length === 0) {
+      continue;
     }
 
-    return out ;
+    if (counts.hasOwnProperty(word)) {
+      counts[word]++;
+    }
+    else {
+      counts[word] = 1;
+    }
   }
 
-  this.Words = function(message) {
-    this.count = calculateWords(message);
-  };
+  this.count = counts;
+}
 
-})();
+module.exports = Words;
