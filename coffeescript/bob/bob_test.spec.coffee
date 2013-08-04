@@ -1,4 +1,4 @@
-bob = require('./example');
+bob = require('./example')
 
 describe 'bob', ->
 
