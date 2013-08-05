@@ -6,49 +6,49 @@
 
   describe('bob', function() {
     it('responds to stuff', function() {
-      return expect(bob.hey('Tom-ay-to, tom-aaaah-to.')).toEqual('Whatever.');
+      return expect(bob.hey('Tom-ay-to, tom-aaaah-to.')).toBe('Whatever.');
     });
     it('reacts to shouting', function() {
-      return expect(bob.hey('WATCH OUT!')).toEqual('Woah, chill out!');
+      return expect(bob.hey('WATCH OUT!')).toBe('Woah, chill out!');
     });
     it('blows off questions', function() {
-      return expect(bob.hey('Does this cryogenic chamber make me look fat?')).toEqual('Sure.');
+      return expect(bob.hey('Does this cryogenic chamber make me look fat?')).toBe('Sure.');
     });
     it('responds to talking forcefully', function() {
-      return expect(bob.hey("Let's go make out behind the gym!")).toEqual('Whatever.');
+      return expect(bob.hey("Let's go make out behind the gym!")).toBe('Whatever.');
     });
     it('responds when there are acronyms', function() {
-      return expect(bob.hey("It's OK if you don't want to go to the DMV.")).toEqual('Whatever.');
+      return expect(bob.hey("It's OK if you don't want to go to the DMV.")).toBe('Whatever.');
     });
     it('reacts to shouted questions', function() {
-      return expect(bob.hey('WHAT THE HELL WERE YOU THINKING?')).toEqual('Woah, chill out!');
+      return expect(bob.hey('WHAT THE HELL WERE YOU THINKING?')).toBe('Woah, chill out!');
     });
     it('reacts to shouting with numbers', function() {
-      return expect(bob.hey('1, 2, 3 GO!')).toEqual('Woah, chill out!');
+      return expect(bob.hey('1, 2, 3 GO!')).toBe('Woah, chill out!');
     });
     it('reacts to shouting with special characters', function() {
-      return expect(bob.hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')).toEqual('Woah, chill out!');
+      return expect(bob.hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')).toBe('Woah, chill out!');
     });
     it('reacts to shouting even with no exclamation mark', function() {
-      return expect(bob.hey('I HATE YOU')).toEqual('Woah, chill out!');
+      return expect(bob.hey('I HATE YOU')).toBe('Woah, chill out!');
     });
     it('responds to a statement containing a question mark', function() {
-      return expect(bob.hey('Ending with ? means a question.')).toEqual('Whatever.');
+      return expect(bob.hey('Ending with ? means a question.')).toBe('Whatever.');
     });
     it('blows off prattling ending with a question', function() {
-      return expect(bob.hey('Wait! Hang on. Are you going to be OK?')).toEqual('Sure.');
+      return expect(bob.hey('Wait! Hang on. Are you going to be OK?')).toBe('Sure.');
     });
     it('gets irritated at silence', function() {
-      return expect(bob.hey('')).toEqual('Fine. Be that way!');
+      return expect(bob.hey('')).toBe('Fine. Be that way!');
     });
     it('gets irritated at null', function() {
-      return expect(bob.hey(null)).toEqual('Fine. Be that way!');
+      return expect(bob.hey(null)).toBe('Fine. Be that way!');
     });
     it('gets irritated at undefined', function() {
-      return expect(bob.hey(void 0)).toEqual('Fine. Be that way!');
+      return expect(bob.hey(void 0)).toBe('Fine. Be that way!');
     });
     return it('gets irritated at prolonged silence', function() {
-      return expect(bob.hey('      ')).toEqual('Fine. Be that way!');
+      return expect(bob.hey('      ')).toBe('Fine. Be that way!');
     });
   });
 

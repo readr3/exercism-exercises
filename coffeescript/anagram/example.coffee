@@ -9,7 +9,7 @@ module.exports = class Anagram
     matches
 
 isAnagram = (word, sortedTerm) ->
-  sortString(word) == sortedTerm
+  sortString(word) is sortedTerm
 
 sortString = (s) ->
   s.split('').sort().join('')

@@ -3,7 +3,7 @@
   var firstLine, interpolate, secondLine, verse, verses;
 
   exports.sing = function(start, end) {
-    if (typeof end === 'undefined') {
+    if (end == null) {
       end = 0;
     }
     return verses(start, end);

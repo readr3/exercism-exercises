@@ -1,5 +1,5 @@
 exports.sing = (start, end) ->
-  end = 0 if typeof end == 'undefined'
+  end ?= 0
   verses start, end
 
 exports.verse = verse = (n) ->
@@ -15,9 +15,9 @@ firstLine = {
   base: "{0} {1} of beer on the wall, {0} {1} of beer.\n"
   zero: "No more bottles of beer on the wall, no more bottles of beer.\n"
   sing: (bottles) ->
-    if bottles == 0
+    if bottles is 0
       @zero
-    else if bottles == 1
+    else if bottles is 1
       interpolate @base, '1', 'bottle'
     else
       interpolate @base, bottles, 'bottles'
@@ -28,11 +28,11 @@ secondLine = {
   zero: "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
   one:  "Take it down and pass it around, no more bottles of beer on the wall.\n"
   sing: (bottlesLeft) ->
-    if bottlesLeft == 0
+    if bottlesLeft is 0
       @zero
-    else if bottlesLeft == 1
+    else if bottlesLeft is 1
       @one
-    else if bottlesLeft == 2
+    else if bottlesLeft is 2
       interpolate @base, '1', 'bottle'
     else
       interpolate @base, bottlesLeft - 1, 'bottles'

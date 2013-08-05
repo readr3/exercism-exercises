@@ -5,10 +5,10 @@ exports.hey = (phrase) ->
   return 'Whatever.'
 
 isQuestion = (phrase) ->
-  phrase[phrase.length - 1] == '?'
+  phrase[phrase.length - 1] is '?'
 
 isShouting = (phrase) ->
-  phrase.toUpperCase() == phrase
+  phrase.toUpperCase() is phrase
 
 isSilence = (phrase) ->
-  !phrase || !phrase.trim()
+  not phrase or not phrase.trim()
