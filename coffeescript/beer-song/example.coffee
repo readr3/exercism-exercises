@@ -1,45 +1,34 @@
-exports.sing = (start, end) ->
-  end ?= 0
-  verses start, end
+module.exports =
+  sing: (first, last) ->
+    last ?= 0
+    verses = []
+    for i in [first..last]
+      verses.push @verse(i)
+    verses.join "\n"
 
-exports.verse = verse = (n) ->
-  firstLine.sing(n) + secondLine.sing(n)
+  verse: (n) ->
+    switch n
+      when 0
+        """
+        No more bottles of beer on the wall, no more bottles of beer.
+        Go to the store and buy some more, 99 bottles of beer on the wall.
 
-verses = (start, end) ->
-  result = []
-  for i in [start..end]
-    result.push verse(i)
-  result.join "\n"
+        """
+      when 1
+        """
+        1 bottle of beer on the wall, 1 bottle of beer.
+        Take it down and pass it around, no more bottles of beer on the wall.
 
-firstLine = {
-  base: "{0} {1} of beer on the wall, {0} {1} of beer.\n"
-  zero: "No more bottles of beer on the wall, no more bottles of beer.\n"
-  sing: (bottles) ->
-    if bottles is 0
-      @zero
-    else if bottles is 1
-      interpolate @base, '1', 'bottle'
-    else
-      interpolate @base, bottles, 'bottles'
-}
+        """
+      when 2
+        """
+        2 bottles of beer on the wall, 2 bottles of beer.
+        Take one down and pass it around, 1 bottle of beer on the wall.
 
-secondLine = {
-  base: "Take one down and pass it around, {0} {1} of beer on the wall.\n"
-  zero: "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
-  one:  "Take it down and pass it around, no more bottles of beer on the wall.\n"
-  sing: (bottlesLeft) ->
-    if bottlesLeft is 0
-      @zero
-    else if bottlesLeft is 1
-      @one
-    else if bottlesLeft is 2
-      interpolate @base, '1', 'bottle'
-    else
-      interpolate @base, bottlesLeft - 1, 'bottles'
-}
+        """
+      else
+        """
+        #{n} bottles of beer on the wall, #{n} bottles of beer.
+        Take one down and pass it around, #{n-1} bottles of beer on the wall.
 
-interpolate = (s) ->
-  for i in [0..(arguments.length-1)]
-    regex = new RegExp "\\{" + i + "\\}", "g"
-    s = s.replace regex, arguments[i+1]
-  s
+        """
