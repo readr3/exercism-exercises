@@ -1,15 +1,19 @@
 'use strict';
 
+function isDivisible(numerator, denominator) {
+  return numerator % denominator === 0;
+}
+
+function isLeapException(n) {
+  return isDivisible(n, 100) && !isDivisible(n, 400);
+}
+
 function Year(number) {
   this.year = number;
 }
 
-Year.prototype.isDivisibleBy = function(divisor) {
-  return this.year % divisor === 0;
-};
-
 Year.prototype.isLeapYear = function() {
-  return (this.isDivisibleBy(4) && !this.isDivisibleBy(100)) || this.isDivisibleBy(400);
+  return isDivisible(this.year, 4) && !isLeapException(this.year);
 };
 
 module.exports = Year;
