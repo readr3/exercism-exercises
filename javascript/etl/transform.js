@@ -1,17 +1,17 @@
-exports.transform = function(input) {
-  'use strict';
+'use strict';
 
-  var transformedObject = {};
+exports.transform = function(extracted) {
+  var load = {};
 
-    for (var key in input) {
-      if (input.hasOwnProperty(key)) {
-        var currentValues = input[key];
+  function fill(letter, i, letters) {
+    load[letter.toLowerCase()] = score;
+  }
 
-        for (var i = 0; i < currentValues.length; i++) {
-          var currentValue = currentValues[i].toLowerCase();
-          transformedObject[currentValue] = key;
-        }
-      }
+  for ( var score in extracted ) {
+    if (extracted.hasOwnProperty(score)) {
+      extracted[score].forEach( fill );
     }
-    return transformedObject;
+  }
+  
+  return load;
 };

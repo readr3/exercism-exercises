@@ -8,13 +8,13 @@ describe("Transform", function() {
     expect(ETL.transform(old)).toEqual(expected);
   });
 
-  xit("transforms more values", function() {
+  it("transforms more values", function() {
     var old = { 'hello' : ['WORLD', 'GSCHOOLERS'] };
     var expected = { 'world' : 'hello', 'gschoolers' : 'hello' };
     expect(ETL.transform(old)).toEqual(expected);
   });
 
-  xit("transforms more keys", function() {
+  it("transforms more keys", function() {
     var old = { 'a' : ['APPLE', 'ARTICHOKE'], 'b' : ['BOAT', 'BALLERINA'] };
     var expected = {
       'apple' : 'a',
@@ -26,7 +26,7 @@ describe("Transform", function() {
     expect(ETL.transform(old)).toEqual(expected);
   });
 
-  xit("transforms a full dataset", function() {
+  it("transforms a full dataset", function() {
 
     var old = {
       "1" : [ "A", "E", "I", "O", "U", "L", "N", "R", "S", "T" ],
