@@ -1,57 +1,35 @@
-function SpaceAge(seconds) {
-  'use strict';
+'use strict';
 
-  this.seconds = seconds;
-  this.earthYears = seconds / 31557600;
+var ORBITAL_PERIODS = {
+  Mercury:    7600530.24,
+  Venus  :   19413907.20,
+  Earth  :   31558149.76,
+  Mars   :   59354294.40,
+  Jupiter:  374335776.00,
+  Saturn :  929596608.00,
+  Uranus : 2661041808.00,
+  Neptune: 5200418592.00
+};
 
-  this.earthToOtherPlanets = {
-    mercury : 0.2408467,
-    venus   : 0.61519726,
-    earth   : 1,
-    mars    : 1.8808158,
-    jupiter : 11.862615,
-    saturn  : 29.447498,
-    uranus  : 84.016846,
-    neptune : 164.79132
+function generatePlanetMethod(planet) {
+  return function () {
+    return round(this.seconds / ORBITAL_PERIODS[planet], 2);
   };
-
-  this.yearsOnPlanet = function(planet) {
-    var years = this.earthYears / this.earthToOtherPlanets[planet];
-    return parseFloat(years.toFixed(2));
-  };
-
-  this.onMercury = function() {
-    return this.yearsOnPlanet("mercury");
-  };
-
-  this.onVenus = function() {
-    return this.yearsOnPlanet("venus");
-  };
-
-  this.onEarth = function() {
-    return this.yearsOnPlanet("earth");
-  };
-
-  this.onMars = function() {
-    return this.yearsOnPlanet("mars");
-  };
-
-  this.onJupiter = function() {
-    return this.yearsOnPlanet("jupiter");
-  };
-
-  this.onSaturn = function() {
-    return this.yearsOnPlanet("saturn");
-  };
-
-  this.onUranus = function() {
-    return this.yearsOnPlanet("uranus");
-  };
-
-  this.onNeptune = function() {
-    return this.yearsOnPlanet("neptune");
-  };
-
 }
 
+function round(n, decimals) {
+  var multiplier = Math.pow(10, decimals);
+  return Math.round(multiplier * n) / multiplier;
+}
+
+function SpaceAge(seconds) {
+  this.seconds = seconds;
+
+  for ( var planet in ORBITAL_PERIODS ) {
+    if (ORBITAL_PERIODS.hasOwnProperty(planet)) {
+      this["on" + planet] = generatePlanetMethod(planet);
+    }
+  }
+}
+  
 module.exports = SpaceAge;
