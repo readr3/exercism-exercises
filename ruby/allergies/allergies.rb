@@ -2,6 +2,8 @@ class Allergies
   ALLERGENS = %w[eggs peanuts shellfish strawberries
                  tomatoes chocolate pollen cats]
 
+  attr_reader :score
+
   def initialize(score)
     @score = score
   end
@@ -12,9 +14,9 @@ class Allergies
 
   def list
     result = []
-    ALLERGENS.each_with_index { |allergen, i|
-      result << allergen if (2**i & @score) > 0
-    }
+    ALLERGENS.each_with_index do |allergen, i|
+      result << allergen if (2**i & score) > 0
+    end
     result
   end
 end
