@@ -31,5 +31,5 @@ function SpaceAge(seconds) {
     }
   }
 }
-  
+
 module.exports = SpaceAge;
