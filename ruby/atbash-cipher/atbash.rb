@@ -1,22 +1,31 @@
+LETTERS = 'abcdefghijklmnopqrstuvwxyz'
+    
 class Atbash
-  LETTERS = 'abcdefghijklmnopqrstuvwxyz'
+  def self.encode(s)
+    message = Encodable.new(s)
+    message.ciphertext
+  end
+end
 
-  def self.encode(message)
-    segment(translate(sanitize(message)))
+class Encodable
+  attr_reader :plaintext, :ciphertext
+
+  def initialize(s)
+    @plaintext = sanitize(s)
+    @ciphertext = segment(encode(plaintext))
   end
 
   private
 
-  def self.sanitize(message)
-    message = message.gsub(/\W/, '')
-    message.downcase
+  def sanitize(s)
+    s.downcase.gsub(/\W/, '')
   end
 
-  def self.translate(s)
+  def encode(s)
     s.tr(LETTERS, LETTERS.reverse)
   end
 
-  def self.segment(s)
+  def segment(s)
     s.scan(/.{1,5}/).join(' ')
   end
 end
