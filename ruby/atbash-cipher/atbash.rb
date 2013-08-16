@@ -2,7 +2,7 @@ class Atbash
   LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
   def self.encode(message)
-    segment(sanitize(message).tr(LETTERS, LETTERS.reverse))
+    segment(translate(sanitize(message)))
   end
 
   private
@@ -10,6 +10,10 @@ class Atbash
   def self.sanitize(message)
     message = message.gsub(/\W/, '')
     message.downcase
+  end
+
+  def self.translate(s)
+    s.tr(LETTERS, LETTERS.reverse)
   end
 
   def self.segment(s)
