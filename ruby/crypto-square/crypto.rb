@@ -12,7 +12,7 @@ class Crypto
   end
 
   def normalize_ciphertext
-    segment(ciphertext, 5)
+    segment(ciphertext, 5).join(' ')
   end
 
   def plaintext_segments
@@ -25,15 +25,15 @@ class Crypto
 
   private
 
-  def pivot(stringArray)
-    stringArray.each_with_object([]) { |s, charArray|
-      charArray << s.ljust(size, ' ').split('')
-    }.transpose.each_with_object('') { |chars, result|
-      result << chars.join('').strip
-    }
-  end
+    def pivot(stringArray)
+      stringArray.each_with_object([]) { |s, charArray|
+        charArray << s.ljust(size, ' ').split('')
+      }.transpose.each_with_object('') { |chars, result|
+        result << chars.join('').strip
+      }
+    end
 
-  def segment(s, segment_size)
-    s.scan(Regexp.new(".{1," + segment_size.to_s + "}"))
-  end
+    def segment(s, segment_size)
+      s.scan(Regexp.new(".{1," + segment_size.to_s + "}"))
+    end
 end

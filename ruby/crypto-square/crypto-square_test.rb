@@ -53,7 +53,6 @@ class CryptoTest < MiniTest::Unit::TestCase
   end
 
   def test_more_normalized_ciphertext
-    skip
     crypto = Crypto.new('Vampires are people too!')
     assert_equal 'vrela epems etpao oirpo', crypto.normalize_ciphertext
   end
