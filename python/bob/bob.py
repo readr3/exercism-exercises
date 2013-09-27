@@ -15,4 +15,4 @@ def is_silence(phrase):
   return not phrase or phrase.strip() == ''
 
 def is_shout(phrase):
-  return phrase.upper() == phrase
+  return phrase.isupper()
