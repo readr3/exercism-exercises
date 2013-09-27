@@ -12,7 +12,7 @@ def is_question(phrase):
   return phrase.endswith('?')
 
 def is_silence(phrase):
-  return not phrase or phrase.strip() == ''
+  return not phrase or not phrase.strip()
 
 def is_shout(phrase):
   return phrase.isupper()
