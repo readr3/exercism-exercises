@@ -7,11 +7,7 @@ Grains.prototype.square = function (n) {
 };
 
 Grains.prototype.total = function () {
-  var count = 0;
-  for (var i = 1; i <= 64; i++) {
-    count += this.square(i);
-  }
-  return count;
+  return this.square(65);
 };
 
 module.exports = Grains;
