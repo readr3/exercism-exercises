@@ -1,52 +1,54 @@
-bob = require('./example')
+Bob = require "./bob"
+describe "Bob", ->
+  bob = new Bob()
+  it "stating something", ->
+    result = bob.hey "Tom-ay-to, tom-aaaah-to."
+    expect(result).toEqual "Whatever."
 
-describe 'bob', ->
+  it "shouting", ->
+    result = bob.hey "WATCH OUT!"
+    expect(result).toEqual "Woah, chill out!"
 
-  it 'responds to stuff', ->
-    expect(bob.hey('Tom-ay-to, tom-aaaah-to.')).toBe 'Whatever.'
+  it "asking a question", ->
+    result = bob.hey "Does this cryogenic chamber make me look fat?"
+    expect(result).toEqual "Sure."
 
-  it 'reacts to shouting', ->
-    expect(bob.hey('WATCH OUT!')).toBe 'Woah, chill out!'
+  it "talking forcefully", ->
+    result = bob.hey "Let's go make out behind the gym!"
+    expect(result).toEqual "Whatever."
 
-  it 'blows off questions', ->
-    expect(bob.hey('Does this cryogenic chamber make me look fat?'))
-      .toBe 'Sure.'
+  it "using acronyms in regular speech", ->
+    result = bob.hey "It's OK if you don't want to go to the DMV."
+    expect(result).toEqual "Whatever."
 
-  it 'responds to talking forcefully', ->
-    expect(bob.hey("Let's go make out behind the gym!")).toBe 'Whatever.'
+  it "forceful questions", ->
+    result = bob.hey "WHAT THE HELL WERE YOU THINKING?"
+    expect(result).toEqual "Woah, chill out!"
 
-  it 'responds when there are acronyms', ->
-    expect(bob.hey("It's OK if you don't want to go to the DMV."))
-      .toBe 'Whatever.'
+  it "shouting numbers", ->
+    result = bob.hey "1, 2, 3 GO!"
+    expect(result).toEqual "Woah, chill out!"
 
-  it 'reacts to shouted questions', ->
-    expect(bob.hey('WHAT THE HELL WERE YOU THINKING?'))
-      .toBe 'Woah, chill out!'
+  it "shouting with special characters", ->
+    result = bob.hey "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"
+    expect(result).toEqual "Woah, chill out!"
 
-  it 'reacts to shouting with numbers', ->
-    expect(bob.hey('1, 2, 3 GO!')).toBe 'Woah, chill out!'
+  it "shouting with no exclamation mark", ->
+    result = bob.hey "I HATE YOU"
+    expect(result).toEqual "Woah, chill out!"
 
-  it 'reacts to shouting with special characters', ->
-    expect(bob.hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!'))
-      .toBe 'Woah, chill out!'
+  it "statement containing question mark", ->
+    result = bob.hey "Ending with a ? means a question."
+    expect(result).toEqual "Whatever."
 
-  it 'reacts to shouting even with no exclamation mark', ->
-    expect(bob.hey('I HATE YOU')).toBe 'Woah, chill out!'
+  it "prattling on", ->
+    result = bob.hey "Wait! Hang on.  Are you going to be OK?"
+    expect(result).toEqual "Sure."
 
-  it 'responds to a statement containing a question mark', ->
-    expect(bob.hey('Ending with ? means a question.')).toBe 'Whatever.'
+  it "silence", ->
+    result = bob.hey ""
+    expect(result).toEqual "Fine. Be that way!"
 
-  it 'blows off prattling ending with a question', ->
-    expect(bob.hey('Wait! Hang on. Are you going to be OK?')).toBe 'Sure.'
-
-  it 'gets irritated at silence', ->
-    expect(bob.hey('')).toBe 'Fine. Be that way!'
-
-  it 'gets irritated at null', ->
-    expect(bob.hey(null)).toBe 'Fine. Be that way!'
-
-  it 'gets irritated at undefined', ->
-    expect(bob.hey(undefined)).toBe 'Fine. Be that way!'
-
-  it 'gets irritated at prolonged silence', ->
-    expect(bob.hey('      ')).toBe 'Fine. Be that way!'
+  it "prolonged silence", ->
+    result = bob.hey "   "
+    expect(result).toEqual "Fine. Be that way!"
