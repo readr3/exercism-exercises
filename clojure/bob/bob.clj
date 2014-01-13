@@ -1,9 +1,14 @@
 (ns bob
-  (require [clojure.string :as string]))
+  (:require [clojure.string :as string]))
 
-(defn- question? [phrase] (= \? (last phrase)))
-(defn- shout?    [phrase] (= phrase (string/upper-case phrase)))
-(defn- silence?  [phrase] (string/blank? phrase))
+(defn- question? [phrase]
+  (= \? (last phrase)))
+
+(defn- shout? [phrase]
+  (= phrase (string/upper-case phrase)))
+
+(defn- silence? [phrase]
+  (string/blank? phrase))
 
 (defn response-for [phrase]
   (cond
